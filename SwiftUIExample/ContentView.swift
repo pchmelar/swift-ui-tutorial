@@ -10,12 +10,12 @@ import SwiftUI
 
 struct ContentView : View {
     var body: some View {
-		VStack(alignment: .leading, spacing: 20) {
-			Text("CLUB MATE IS AWESOME")
-				.padding()
-			Divider()
-			Text("TRUST ME")
-				.padding()
+		ZStack() {
+			Image("mate")
+			Text("CLUB MATE")
+				.font(.largeTitle)
+				.background(Color.black)
+				.foregroundColor(.yellow)
 		}
     }
 }
