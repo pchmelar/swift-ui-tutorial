@@ -10,10 +10,15 @@ import SwiftUI
 
 struct ContentView : View {
     var body: some View {
-		Text("Hello world")
-		.padding()
-		.foregroundColor(.white)
-		.background(LinearGradient(gradient: Gradient(colors: [.red, .blue, .black]), startPoint: .topLeading, endPoint: .bottomTrailing), cornerRadius: 0)
+		Text("CLUB MATE IS AWESOME")
+		.font(.largeTitle)
+		.foregroundColor(.blue)
+		.background(
+			Circle()
+			.fill(Color.red)
+			.frame(width: 200, height: 200)
+			.clipped()
+		)
     }
 }
 
