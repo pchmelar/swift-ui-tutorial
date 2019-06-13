@@ -10,17 +10,23 @@ import SwiftUI
 
 struct ContentView : View {
 	
-	var animals = ["Dog", "Cat", "Monkey", "Bear"]
-	@State private var selectedAnimal = 0
+	var dateFormatter: DateFormatter {
+		let formatter = DateFormatter()
+		formatter.dateStyle = .long
+		return formatter
+	}
+	
+	@State var birthDate = Date()
 	
 	var body: some View {
 		VStack {
-			Picker(selection: $selectedAnimal, label: Text("Please choose an animal")) {
-				ForEach(0 ..< animals.count) {
-					Text(self.animals[$0])
-				}
-			}
-			Text("You selected: \(animals[selectedAnimal])")
+			DatePicker(
+				$birthDate,
+				maximumDate: Date(),
+				displayedComponents: .date
+			)
+			
+			Text("Date is \(birthDate, formatter: dateFormatter)")
 		}
 	}
 }
