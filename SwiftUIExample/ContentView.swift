@@ -10,27 +10,26 @@ import SwiftUI
 
 struct ContentView : View {
 	
-	// What if we have to return mismatched types?
+	let colors: [Color] = [.red, .green, .blue]
 	
-	// First approach, worse readability but better performance
     var body: some View {
-		Group {
-			if Bool.random() {
-				Image("mate")
-			} else {
-				Text("Try again :(")
+		VStack {
+			VStack(alignment: .center) {
+				ForEach((1...10).reversed()) {
+					Text("\($0)")
+				}
+				Text("Done!")
+			}
+			
+			VStack {
+				ForEach(colors.identified(by: \.self)) { color in
+					Text(color.description.capitalized)
+						.padding()
+						.background(color)
+				}
 			}
 		}
     }
-	
-	// Second approach, better readability but worse performance
-//	var body: AnyView {
-//		if Bool.random() {
-//			return AnyView(Image("mate"))
-//		} else {
-//			return AnyView(Text("Better luck next time"))
-//		}
-//	}
 }
 
 #if DEBUG
