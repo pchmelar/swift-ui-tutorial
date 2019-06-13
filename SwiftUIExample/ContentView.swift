@@ -10,15 +10,13 @@ import SwiftUI
 
 struct ContentView : View {
     var body: some View {
-		Text("CLUB MATE IS AWESOME")
-		.font(.largeTitle)
-		.foregroundColor(.blue)
-		.background(
-			Circle()
-			.fill(Color.red)
-			.frame(width: 200, height: 200)
-			.clipped()
-		)
+		VStack(alignment: .leading, spacing: 20) {
+			Text("CLUB MATE IS AWESOME")
+				.padding()
+			Divider()
+			Text("TRUST ME")
+				.padding()
+		}
     }
 }
 
