@@ -10,20 +10,13 @@ import SwiftUI
 
 struct ContentView : View {
 	
-	@State var showDetails = false
+	@State var name: String = "John"
 	
     var body: some View {
 		VStack {
-			Button(action: {
-				self.showDetails.toggle()
-			}) {
-				Image("mate")
-			}
-			
-			if showDetails {
-				Text("Club Mate is awesome!")
-					.font(.largeTitle)
-			}
+			TextField($name)
+				.textFieldStyle(.roundedBorder)
+			Text("Hello, \(name)!")
 		}
     }
 }
