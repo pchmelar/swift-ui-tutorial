@@ -10,19 +10,23 @@ import SwiftUI
 
 struct ContentView : View {
 	
-	@State private var tapped = false
+	@State private var scale: Length = 0.1
 	
 	var body: some View {
-		VStack {
-			Image("mate")
-				.tapAction(count: 2) {
-					self.tapped = !self.tapped
-				}
-			if tapped {
-				Text("Club Mate is Awesome!")
-					.font(.largeTitle)
-			}
-		}
+		Image("mate")
+			.scaleEffect(scale)
+			.gesture(
+				TapGesture()
+					.onEnded { _ in
+						self.scale += 0.1
+					}
+			)
+			.gesture(
+				LongPressGesture()
+					.onEnded { _ in
+						self.scale -= 0.1
+					}
+			)
 	}
 }
 
