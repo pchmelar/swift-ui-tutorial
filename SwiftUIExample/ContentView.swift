@@ -10,14 +10,19 @@ import SwiftUI
 
 struct ContentView : View {
 	
-	@State var celsius: Double = 0
+	var animals = ["Dog", "Cat", "Monkey", "Bear"]
+	@State private var selectedAnimal = 0
 	
-    var body: some View {
+	var body: some View {
 		VStack {
-			Slider(value: $celsius, from: -100, through: 100, by: 0.1)
-			Text("\(celsius) Celsius is \(celsius * 9 / 5 + 32) Fahrenheit")
+			Picker(selection: $selectedAnimal, label: Text("Please choose an animal")) {
+				ForEach(0 ..< animals.count) {
+					Text(self.animals[$0])
+				}
+			}
+			Text("You selected: \(animals[selectedAnimal])")
 		}
-    }
+	}
 }
 
 #if DEBUG
