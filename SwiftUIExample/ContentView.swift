@@ -10,19 +10,18 @@ import SwiftUI
 
 struct ContentView : View {
 	
-	var colors = ["Red", "Green", "Blue"]
-	
-	@State private var favoriteColor = 0
+	@State private var tapped = false
 	
 	var body: some View {
 		VStack {
-			SegmentedControl(selection: $favoriteColor) {
-				ForEach(0 ..< colors.count) { index in
-					Text(self.colors[index])
+			Image("mate")
+				.tapAction(count: 2) {
+					self.tapped = !self.tapped
 				}
+			if tapped {
+				Text("Club Mate is Awesome!")
+					.font(.largeTitle)
 			}
-			
-			Text("Value: \(colors[favoriteColor])")
 		}
 	}
 }
