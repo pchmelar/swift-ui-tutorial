@@ -10,9 +10,10 @@ import SwiftUI
 
 struct ContentView : View {
     var body: some View {
-		Image("mate")
-		.resizable()
-		.aspectRatio(contentMode: .fit)
+		Text("Hello world")
+		.padding()
+		.foregroundColor(.white)
+		.background(LinearGradient(gradient: Gradient(colors: [.red, .blue, .black]), startPoint: .topLeading, endPoint: .bottomTrailing), cornerRadius: 0)
     }
 }
 
