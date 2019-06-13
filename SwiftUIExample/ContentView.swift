@@ -10,13 +10,12 @@ import SwiftUI
 
 struct ContentView : View {
 	
-	@State var name: String = "John"
+	@State var celsius: Double = 0
 	
     var body: some View {
 		VStack {
-			TextField($name)
-				.textFieldStyle(.roundedBorder)
-			Text("Hello, \(name)!")
+			Slider(value: $celsius, from: -100, through: 100, by: 0.1)
+			Text("\(celsius) Celsius is \(celsius * 9 / 5 + 32) Fahrenheit")
 		}
     }
 }
