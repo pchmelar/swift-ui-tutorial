@@ -10,9 +10,9 @@ import SwiftUI
 
 struct ContentView : View {
     var body: some View {
-		Image(systemName: "bitcoinsign.circle")
-		.foregroundColor(.red)
-		.font(.largeTitle)
+		Image("mate")
+		.resizable()
+		.aspectRatio(contentMode: .fit)
     }
 }
 
