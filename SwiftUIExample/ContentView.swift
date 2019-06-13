@@ -9,24 +9,28 @@
 import SwiftUI
 
 struct ContentView : View {
-	
-	@State private var scale: Length = 0.1
-	
 	var body: some View {
-		Image("mate")
-			.scaleEffect(scale)
-			.gesture(
-				TapGesture()
-					.onEnded { _ in
-						self.scale += 0.1
-					}
-			)
-			.gesture(
-				LongPressGesture()
-					.onEnded { _ in
-						self.scale -= 0.1
-					}
-			)
+		NavigationView {
+			NavigationButton(destination: DetailView()) {
+				Text("Club Mate")
+			}
+		}.onAppear {
+			print("ContentView appeared!")
+		}.onDisappear {
+			print("ContentView disappeared!")
+		}
+	}
+}
+
+struct DetailView : View {
+	var body: some View {
+		VStack {
+			Text("Club Mate is Awesome!")
+		}.onAppear {
+			print("DetailView appeared!")
+		}.onDisappear {
+			print("DetailView disappeared!")
+		}
 	}
 }
 
