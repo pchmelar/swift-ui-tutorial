@@ -9,26 +9,11 @@
 import SwiftUI
 
 struct ContentView : View {
-	
-	let colors: [Color] = [.red, .green, .blue]
-	
     var body: some View {
-		VStack {
-			VStack(alignment: .center) {
-				ForEach((1...10).reversed()) {
-					Text("\($0)")
-				}
-				Text("Done!")
-			}
-			
-			VStack {
-				ForEach(colors.identified(by: \.self)) { color in
-					Text(color.description.capitalized)
-						.padding()
-						.background(color)
-				}
-			}
-		}
+		Rectangle()
+			.fill(Color.red)
+			.frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
+			.edgesIgnoringSafeArea(.all)
     }
 }
 
