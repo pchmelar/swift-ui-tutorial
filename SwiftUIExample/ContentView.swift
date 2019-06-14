@@ -7,34 +7,36 @@
 //
 
 import SwiftUI
-import Combine
 
-class UserSettings: BindableObject {
+struct ContentView : View {
 	
-	// Publisher with Void value type and Never error
-	var didChange = PassthroughSubject<Void, Never>()
+	@EnvironmentObject var settings: UserSettings
 	
-	var score = 0 {
-		didSet {
-			// Send Void into publisher
-			didChange.send(())
+	var body: some View {
+		NavigationView {
+			VStack {
+				// A button that writes to the environment settings
+				Button(action: {
+					self.settings.score += 1
+				}) {
+					Text("Increase score")
+				}
+				
+				NavigationButton(destination: DetailView()) {
+					Text("Show score")
+				}
+			}
 		}
 	}
 }
 
-struct ContentView : View {
+struct DetailView: View {
 	
-	@ObjectBinding var settings = UserSettings()
+	@EnvironmentObject var settings: UserSettings
 	
 	var body: some View {
-		VStack {
-			Text("Your score is \(settings.score)")
-			Button(action: {
-				self.settings.score += 1
-			}) {
-				Text("Increase score")
-			}
-		}
+		// A text view that reads from the environment settings
+		Text("Score: \(settings.score)")
 	}
 }
 
