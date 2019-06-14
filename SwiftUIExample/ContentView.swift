@@ -7,29 +7,33 @@
 //
 
 import SwiftUI
+import Combine
 
-struct ContentView : View {
-	var body: some View {
-		NavigationView {
-			NavigationButton(destination: DetailView()) {
-				Text("Club Mate")
-			}
-		}.onAppear {
-			print("ContentView appeared!")
-		}.onDisappear {
-			print("ContentView disappeared!")
+class UserSettings: BindableObject {
+	
+	// Publisher with Void value type and Never error
+	var didChange = PassthroughSubject<Void, Never>()
+	
+	var score = 0 {
+		didSet {
+			// Send Void into publisher
+			didChange.send(())
 		}
 	}
 }
 
-struct DetailView : View {
+struct ContentView : View {
+	
+	@ObjectBinding var settings = UserSettings()
+	
 	var body: some View {
 		VStack {
-			Text("Club Mate is Awesome!")
-		}.onAppear {
-			print("DetailView appeared!")
-		}.onDisappear {
-			print("DetailView disappeared!")
+			Text("Your score is \(settings.score)")
+			Button(action: {
+				self.settings.score += 1
+			}) {
+				Text("Increase score")
+			}
 		}
 	}
 }
