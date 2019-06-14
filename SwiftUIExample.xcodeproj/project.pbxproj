@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		45CE254722B3A94A00F7100C /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45CE254622B3A94A00F7100C /* UserSettings.swift */; };
 		45E3F23F22B293D800B56677 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E3F23E22B293D800B56677 /* AppDelegate.swift */; };
 		45E3F24122B293D800B56677 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E3F24022B293D800B56677 /* SceneDelegate.swift */; };
 		45E3F24322B293D800B56677 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45E3F24222B293D800B56677 /* ContentView.swift */; };
@@ -17,7 +16,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		45CE254622B3A94A00F7100C /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 		45E3F23B22B293D800B56677 /* SwiftUIExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45E3F23E22B293D800B56677 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		45E3F24022B293D800B56677 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,7 +59,6 @@
 				45E3F23E22B293D800B56677 /* AppDelegate.swift */,
 				45E3F24022B293D800B56677 /* SceneDelegate.swift */,
 				45E3F24222B293D800B56677 /* ContentView.swift */,
-				45CE254622B3A94A00F7100C /* UserSettings.swift */,
 				45E3F24422B293DA00B56677 /* Assets.xcassets */,
 				45E3F24922B293DA00B56677 /* LaunchScreen.storyboard */,
 				45E3F24C22B293DA00B56677 /* Info.plist */,
@@ -150,7 +147,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				45E3F23F22B293D800B56677 /* AppDelegate.swift in Sources */,
-				45CE254722B3A94A00F7100C /* UserSettings.swift in Sources */,
 				45E3F24122B293D800B56677 /* SceneDelegate.swift in Sources */,
 				45E3F24322B293D800B56677 /* ContentView.swift in Sources */,
 			);

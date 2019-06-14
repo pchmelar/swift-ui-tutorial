@@ -8,35 +8,30 @@
 
 import SwiftUI
 
-struct ContentView : View {
-	
-	@EnvironmentObject var settings: UserSettings
+struct Animal: Identifiable {
+	var id = UUID()
+	var name: String
+}
+
+struct AnimalRow: View {
+	var animal: Animal
 	
 	var body: some View {
-		NavigationView {
-			VStack {
-				// A button that writes to the environment settings
-				Button(action: {
-					self.settings.score += 1
-				}) {
-					Text("Increase score")
-				}
-				
-				NavigationButton(destination: DetailView()) {
-					Text("Show score")
-				}
-			}
-		}
+		Text("Animal: \(animal.name)")
 	}
 }
 
-struct DetailView: View {
-	
-	@EnvironmentObject var settings: UserSettings
+struct ContentView : View {
+	let animals = [
+		Animal(name: "Dog"),
+		Animal(name: "Cat"),
+		Animal(name: "Bear")
+	]
 	
 	var body: some View {
-		// A text view that reads from the environment settings
-		Text("Score: \(settings.score)")
+		List(animals) { animal in
+			AnimalRow(animal: animal)
+		}
 	}
 }
 
