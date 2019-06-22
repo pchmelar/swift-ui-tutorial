@@ -10,20 +10,21 @@ import SwiftUI
 
 struct ContentView : View {
 	
-	@State var showingAlert = false
+	@State var showingSheet = false
+	
+	var sheet: ActionSheet {
+		ActionSheet(title: Text("ActionSheet"),
+					message: Text("Available actions below"),
+					buttons: [.default(Text("Action"), onTrigger: { self.showingSheet = false })])
+	}
 	
 	var body: some View {
 		Button(action: {
-			self.showingAlert = true
+			self.showingSheet = true
 		}) {
-			Text("Destroy world")
+			Text("Present action sheet")
 		}
-		.presentation($showingAlert) {
-			Alert(title: Text("Destroy world"),
-				  message: Text("This action is irreversible!"),
-				  primaryButton: .destructive(Text("DESTROY!")) { print("World destroyed!") },
-				  secondaryButton: .cancel())
-		}
+		.presentation(showingSheet ? sheet : nil)
 	}
 }
 
