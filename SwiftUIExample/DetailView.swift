@@ -9,15 +9,18 @@
 import SwiftUI
 
 struct DetailView : View {
+	
+	var animal: Animal
+	
 	var body: some View {
-		Text("Detail")
+		Text("\(animal.name) is an awesome animal!")
 	}
 }
 
 #if DEBUG
 struct DetailView_Previews : PreviewProvider {
 	static var previews: some View {
-		DetailView()
+		DetailView(animal: Animal(name: "Owl"))
 	}
 }
 #endif
