@@ -22,21 +22,8 @@ struct AnimalRow: View {
 }
 
 struct ContentView : View {
-	
-	let animals = [
-		Animal(name: "Dog"),
-		Animal(name: "Cat"),
-		Animal(name: "Bear")
-	]
-	
 	var body: some View {
-		NavigationView {
-			List(animals) { animal in
-				NavigationButton(destination: DetailView(animal: animal)) {
-					AnimalRow(animal: animal)
-				}
-			}.navigationBarTitle(Text("Animals"))
-		}
+		PresentationButton(Text("Present detail"), destination: DetailView(animal: Animal(name: "Dog")))
 	}
 }
 
