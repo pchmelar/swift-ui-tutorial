@@ -8,33 +8,17 @@
 
 import SwiftUI
 
-struct Animal: Identifiable {
-	var id = UUID()
-	var name: String
-	var dangerous: Bool
-}
-
-struct AnimalRow: View {
-	var animal: Animal
-	
-	var body: some View {
-		Text("Animal: \(animal.name)")
-	}
-}
-
 struct ContentView : View {
-	let animals = [
-		Animal(name: "Dog", dangerous: false),
-		Animal(name: "Cat", dangerous: false),
-		Animal(name: "Bear", dangerous: true)
-	]
-	
 	var body: some View {
-		List(animals) { animal in
-			AnimalRow(animal: animal)
-			if animal.dangerous {
-				Text("☠️☠️☠️")
-			}
+		NavigationView {
+			Text("This is a great app")
+				.navigationBarTitle(Text("Welcome"), displayMode: .inline)
+				.navigationBarItems(trailing:
+					Button(action: {
+						print("Help tapped!")
+					}) {
+						Text("Help")
+				})
 		}
 	}
 }
