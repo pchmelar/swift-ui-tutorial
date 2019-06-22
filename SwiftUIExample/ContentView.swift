@@ -8,23 +8,30 @@
 
 import SwiftUI
 
-struct ContentView : View {
-	@State var animals = ["Dog", "Cat", "Bear"]
+struct Animal: Identifiable {
+	var id = UUID()
+	var name: String
+}
+
+struct AnimalRow: View {
+	var animal: Animal
 	
 	var body: some View {
-		NavigationView {
-			List {
-				ForEach(animals.identified(by: \.self)) { animal in
-					Text(animal)
-				}.onDelete(perform: delete)
-			}.navigationBarItems(trailing: EditButton())
-		}
+		Text("Animal: \(animal.name)")
 	}
-	
-	func delete(at offsets: IndexSet) {
-		if let first = offsets.first {
-			animals.remove(at: first)
-		}
+}
+
+struct ContentView : View {
+	var body: some View {
+		List {
+			Section(header: Text("Pets")) {
+				AnimalRow(animal: Animal(name: "Dog"))
+				AnimalRow(animal: Animal(name: "Cat"))
+			}
+			Section(header: Text("Dangerous animals"), footer: Text("Watchout!")) {
+				AnimalRow(animal: Animal(name: "Bear"))
+			}
+		}.listStyle(.grouped)
 	}
 }
 
