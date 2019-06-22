@@ -11,6 +11,7 @@ import SwiftUI
 struct Animal: Identifiable {
 	var id = UUID()
 	var name: String
+	var dangerous: Bool
 }
 
 struct AnimalRow: View {
@@ -22,16 +23,19 @@ struct AnimalRow: View {
 }
 
 struct ContentView : View {
+	let animals = [
+		Animal(name: "Dog", dangerous: false),
+		Animal(name: "Cat", dangerous: false),
+		Animal(name: "Bear", dangerous: true)
+	]
+	
 	var body: some View {
-		List {
-			Section(header: Text("Pets")) {
-				AnimalRow(animal: Animal(name: "Dog"))
-				AnimalRow(animal: Animal(name: "Cat"))
+		List(animals) { animal in
+			AnimalRow(animal: animal)
+			if animal.dangerous {
+				Text("☠️☠️☠️")
 			}
-			Section(header: Text("Dangerous animals"), footer: Text("Watchout!")) {
-				AnimalRow(animal: Animal(name: "Bear"))
-			}
-		}.listStyle(.grouped)
+		}
 	}
 }
 
