@@ -9,16 +9,20 @@
 import SwiftUI
 
 struct ContentView : View {
+	
+	@State var showingAlert = false
+	
 	var body: some View {
-		NavigationView {
-			Text("This is a great app")
-				.navigationBarTitle(Text("Welcome"), displayMode: .inline)
-				.navigationBarItems(trailing:
-					Button(action: {
-						print("Help tapped!")
-					}) {
-						Text("Help")
-				})
+		Button(action: {
+			self.showingAlert = true
+		}) {
+			Text("Destroy world")
+		}
+		.presentation($showingAlert) {
+			Alert(title: Text("Destroy world"),
+				  message: Text("This action is irreversible!"),
+				  primaryButton: .destructive(Text("DESTROY!")) { print("World destroyed!") },
+				  secondaryButton: .cancel())
 		}
 	}
 }
